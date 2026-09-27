@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="MOGIBARA">
+    <meta name="copyright" content="MOGIBARA">
+
+    <title>MOGIBARA - Interactive Periodic Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <!-- MOGIBARA BRAND -->
+        <div class="mogibara-brand">
+
+            <div class="mogibara-logo">
+                M
+            </div>
+
+            <div class="mogibara-brand-text">
+                <strong>MOGIBARA</strong>
+                <span>© MOGIBARA</span>
+            </div>
+
+        </div>
+
+
+        <!-- PAGE TITLE -->
+        <div class="header-title">
+
+            <h1 data-i18n="pageTitle">Periodic Table</h1>
+
+            <p data-i18n="pageSubtitle">
+                Interactive Periodic Table of Elements
+            </p>
+
+        </div>
+
+
+        <!-- HEADER CONTROLS -->
+        <div class="header-controls">
+
+            <button
+                id="filterButton"
+                class="control-button"
+                type="button">
+
+                <span data-i18n="filtersBtn">Filters</span>
+
+            </button>
+
+
+            <button
+                id="languageButton"
+                class="control-button"
+                type="button">
+
+                অসমীয়া / English
+
+            </button>
+
+
+            <button
+                id="themeButton"
+                class="control-button"
+                type="button">
+
+                <span data-i18n="themeBtn">Dark / Light</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         FILTER PANEL
+    ====================================================== -->
+
+    <aside
+        id="filterPanel"
+        class="filter-panel"
+        aria-hidden="true">
+
+
+        <div class="filter-header">
+
+            <h2 data-i18n="filtersBtn">
+                Filters
+            </h2>
+
+            <button
+                id="closeFilterButton"
+                class="close-filter-button"
+                type="button"
+                aria-label="Close filters">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORY FILTER -->
+
+        <section class="filter-section">
+
+            <h3 data-i18n="categoryHeading">
+                Element Category
+            </h3>
+
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="alkali-metal">
+                <span data-i18n="cat-alkali-metal">Alkali Metals</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="alkaline-earth-metal">
+                <span data-i18n="cat-alkaline-earth-metal">Alkaline Earth Metals</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="transition-metal">
+                <span data-i18n="cat-transition-metal">Transition Metals</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="post-transition-metal">
+                <span data-i18n="cat-post-transition-metal">Post-Transition Metals</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="metalloid">
+                <span data-i18n="cat-metalloid">Metalloids</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="nonmetal">
+                <span data-i18n="cat-nonmetal">Nonmetals</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="halogen">
+                <span data-i18n="cat-halogen">Halogens</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="noble-gas">
+                <span data-i18n="cat-noble-gas">Noble Gases</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="lanthanide">
+                <span data-i18n="cat-lanthanide">Lanthanides</span>
+            </label>
+
+            <label class="filter-option">
+                <input type="checkbox" class="category-filter" value="actinide">
+                <span data-i18n="cat-actinide">Actinides</span>
+            </label>
+
+        </section>
+
+
+
+        <!-- ELECTRON SHELL FILTER -->
+
+        <section class="filter-section">
+
+            <h3 data-i18n="shellsHeading">
+                Electron Shells
+            </h3>
+
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="1"><span data-i18n="shell1">1 Shell</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="2"><span data-i18n="shell2">2 Shells</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="3"><span data-i18n="shell3">3 Shells</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="4"><span data-i18n="shell4">4 Shells</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="5"><span data-i18n="shell5">5 Shells</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="6"><span data-i18n="shell6">6 Shells</span></label>
+            <label class="filter-option"><input type="checkbox" class="shell-filter" value="7"><span data-i18n="shell7">7 Shells</span></label>
+
+        </section>
+
+
+
+        <!-- FILTER ACTIONS -->
+
+        <div class="filter-actions">
+
+            <button id="applyFilterButton" class="apply-filter-button" type="button">
+                <span data-i18n="applyBtn">Apply Filters</span>
+            </button>
+
+            <button id="clearFilterButton" class="clear-filter-button" type="button">
+                <span data-i18n="clearBtn">Clear</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- PERIODIC TABLE -->
+
+        <section class="periodic-table-section">
+
+            <div id="periodicTable" class="periodic-table" aria-label="Periodic Table of Elements">
+
+                <!-- PERIOD 1 -->
+                <div class="element-tile nonmetal gas" data-category="nonmetal" data-state="gas" data-shells="1" data-period="1" data-group="1" data-atomic-number="1">
+                    <span class="atomic-number">1</span><span class="symbol">H</span><span class="element-name">Hydrogen</span>
+                </div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="1" data-period="1" data-group="18" data-atomic-number="2">
+                    <span class="atomic-number">2</span><span class="symbol">He</span><span class="element-name">Helium</span>
+                </div>
+
+                <!-- PERIOD 2 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="2" data-period="2" data-group="1" data-atomic-number="3">
+                    <span class="atomic-number">3</span><span class="symbol">Li</span><span class="element-name">Lithium</span>
+                </div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="2" data-period="2" data-group="2" data-atomic-number="4">
+                    <span class="atomic-number">4</span><span class="symbol">Be</span><span class="element-name">Beryllium</span>
+                </div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="2" data-period="2" data-group="13" data-atomic-number="5">
+                    <span class="atomic-number">5</span><span class="symbol">B</span><span class="element-name">Boron</span>
+                </div>
+                <div class="element-tile nonmetal solid" data-category="nonmetal" data-state="solid" data-shells="2" data-period="2" data-group="14" data-atomic-number="6">
+                    <span class="atomic-number">6</span><span class="symbol">C</span><span class="element-name">Carbon</span>
+                </div>
+                <div class="element-tile nonmetal gas" data-category="nonmetal" data-state="gas" data-shells="2" data-period="2" data-group="15" data-atomic-number="7">
+                    <span class="atomic-number">7</span><span class="symbol">N</span><span class="element-name">Nitrogen</span>
+                </div>
+                <div class="element-tile nonmetal gas" data-category="nonmetal" data-state="gas" data-shells="2" data-period="2" data-group="16" data-atomic-number="8">
+                    <span class="atomic-number">8</span><span class="symbol">O</span><span class="element-name">Oxygen</span>
+                </div>
+                <div class="element-tile halogen gas" data-category="halogen" data-state="gas" data-shells="2" data-period="2" data-group="17" data-atomic-number="9">
+                    <span class="atomic-number">9</span><span class="symbol">F</span><span class="element-name">Fluorine</span>
+                </div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="2" data-period="2" data-group="18" data-atomic-number="10">
+                    <span class="atomic-number">10</span><span class="symbol">Ne</span><span class="element-name">Neon</span>
+                </div>
+
+                <!-- PERIOD 3 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="3" data-period="3" data-group="1" data-atomic-number="11">
+                    <span class="atomic-number">11</span><span class="symbol">Na</span><span class="element-name">Sodium</span>
+                </div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="3" data-period="3" data-group="2" data-atomic-number="12">
+                    <span class="atomic-number">12</span><span class="symbol">Mg</span><span class="element-name">Magnesium</span>
+                </div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="3" data-period="3" data-group="13" data-atomic-number="13">
+                    <span class="atomic-number">13</span><span class="symbol">Al</span><span class="element-name">Aluminium</span>
+                </div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="3" data-period="3" data-group="14" data-atomic-number="14">
+                    <span class="atomic-number">14</span><span class="symbol">Si</span><span class="element-name">Silicon</span>
+                </div>
+                <div class="element-tile nonmetal solid" data-category="nonmetal" data-state="solid" data-shells="3" data-period="3" data-group="15" data-atomic-number="15">
+                    <span class="atomic-number">15</span><span class="symbol">P</span><span class="element-name">Phosphorus</span>
+                </div>
+                <div class="element-tile nonmetal solid" data-category="nonmetal" data-state="solid" data-shells="3" data-period="3" data-group="16" data-atomic-number="16">
+                    <span class="atomic-number">16</span><span class="symbol">S</span><span class="element-name">Sulfur</span>
+                </div>
+                <div class="element-tile halogen gas" data-category="halogen" data-state="gas" data-shells="3" data-period="3" data-group="17" data-atomic-number="17">
+                    <span class="atomic-number">17</span><span class="symbol">Cl</span><span class="element-name">Chlorine</span>
+                </div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="3" data-period="3" data-group="18" data-atomic-number="18">
+                    <span class="atomic-number">18</span><span class="symbol">Ar</span><span class="element-name">Argon</span>
+                </div>
+
+                <!-- PERIOD 4 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="4" data-period="4" data-group="1" data-atomic-number="19"><span class="atomic-number">19</span><span class="symbol">K</span><span class="element-name">Potassium</span></div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="4" data-period="4" data-group="2" data-atomic-number="20"><span class="atomic-number">20</span><span class="symbol">Ca</span><span class="element-name">Calcium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="3" data-atomic-number="21"><span class="atomic-number">21</span><span class="symbol">Sc</span><span class="element-name">Scandium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="4" data-atomic-number="22"><span class="atomic-number">22</span><span class="symbol">Ti</span><span class="element-name">Titanium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="5" data-atomic-number="23"><span class="atomic-number">23</span><span class="symbol">V</span><span class="element-name">Vanadium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="6" data-atomic-number="24"><span class="atomic-number">24</span><span class="symbol">Cr</span><span class="element-name">Chromium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="7" data-atomic-number="25"><span class="atomic-number">25</span><span class="symbol">Mn</span><span class="element-name">Manganese</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="8" data-atomic-number="26"><span class="atomic-number">26</span><span class="symbol">Fe</span><span class="element-name">Iron</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="9" data-atomic-number="27"><span class="atomic-number">27</span><span class="symbol">Co</span><span class="element-name">Cobalt</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="10" data-atomic-number="28"><span class="atomic-number">28</span><span class="symbol">Ni</span><span class="element-name">Nickel</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="11" data-atomic-number="29"><span class="atomic-number">29</span><span class="symbol">Cu</span><span class="element-name">Copper</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="12" data-atomic-number="30"><span class="atomic-number">30</span><span class="symbol">Zn</span><span class="element-name">Zinc</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="4" data-period="4" data-group="13" data-atomic-number="31"><span class="atomic-number">31</span><span class="symbol">Ga</span><span class="element-name">Gallium</span></div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="4" data-period="4" data-group="14" data-atomic-number="32"><span class="atomic-number">32</span><span class="symbol">Ge</span><span class="element-name">Germanium</span></div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="4" data-period="4" data-group="15" data-atomic-number="33"><span class="atomic-number">33</span><span class="symbol">As</span><span class="element-name">Arsenic</span></div>
+                <div class="element-tile nonmetal solid" data-category="nonmetal" data-state="solid" data-shells="4" data-period="4" data-group="16" data-atomic-number="34"><span class="atomic-number">34</span><span class="symbol">Se</span><span class="element-name">Selenium</span></div>
+                <div class="element-tile halogen liquid" data-category="halogen" data-state="liquid" data-shells="4" data-period="4" data-group="17" data-atomic-number="35"><span class="atomic-number">35</span><span class="symbol">Br</span><span class="element-name">Bromine</span></div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="4" data-period="4" data-group="18" data-atomic-number="36"><span class="atomic-number">36</span><span class="symbol">Kr</span><span class="element-name">Krypton</span></div>
+
+                <!-- PERIOD 5 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="5" data-period="5" data-group="1" data-atomic-number="37"><span class="atomic-number">37</span><span class="symbol">Rb</span><span class="element-name">Rubidium</span></div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="5" data-period="5" data-group="2" data-atomic-number="38"><span class="atomic-number">38</span><span class="symbol">Sr</span><span class="element-name">Strontium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="3" data-atomic-number="39"><span class="atomic-number">39</span><span class="symbol">Y</span><span class="element-name">Yttrium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="4" data-atomic-number="40"><span class="atomic-number">40</span><span class="symbol">Zr</span><span class="element-name">Zirconium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="5" data-atomic-number="41"><span class="atomic-number">41</span><span class="symbol">Nb</span><span class="element-name">Niobium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="6" data-atomic-number="42"><span class="atomic-number">42</span><span class="symbol">Mo</span><span class="element-name">Molybdenum</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="7" data-atomic-number="43"><span class="atomic-number">43</span><span class="symbol">Tc</span><span class="element-name">Technetium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="8" data-atomic-number="44"><span class="atomic-number">44</span><span class="symbol">Ru</span><span class="element-name">Ruthenium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="9" data-atomic-number="45"><span class="atomic-number">45</span><span class="symbol">Rh</span><span class="element-name">Rhodium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="10" data-atomic-number="46"><span class="atomic-number">46</span><span class="symbol">Pd</span><span class="element-name">Palladium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="11" data-atomic-number="47"><span class="atomic-number">47</span><span class="symbol">Ag</span><span class="element-name">Silver</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="12" data-atomic-number="48"><span class="atomic-number">48</span><span class="symbol">Cd</span><span class="element-name">Cadmium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="13" data-atomic-number="49"><span class="atomic-number">49</span><span class="symbol">In</span><span class="element-name">Indium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="5" data-period="5" data-group="14" data-atomic-number="50"><span class="atomic-number">50</span><span class="symbol">Sn</span><span class="element-name">Tin</span></div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="5" data-period="5" data-group="15" data-atomic-number="51"><span class="atomic-number">51</span><span class="symbol">Sb</span><span class="element-name">Antimony</span></div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="5" data-period="5" data-group="16" data-atomic-number="52"><span class="atomic-number">52</span><span class="symbol">Te</span><span class="element-name">Tellurium</span></div>
+                <div class="element-tile halogen solid" data-category="halogen" data-state="solid" data-shells="5" data-period="5" data-group="17" data-atomic-number="53"><span class="atomic-number">53</span><span class="symbol">I</span><span class="element-name">Iodine</span></div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="5" data-period="5" data-group="18" data-atomic-number="54"><span class="atomic-number">54</span><span class="symbol">Xe</span><span class="element-name">Xenon</span></div>
+
+                <!-- PERIOD 6 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="6" data-period="6" data-group="1" data-atomic-number="55"><span class="atomic-number">55</span><span class="symbol">Cs</span><span class="element-name">Cesium</span></div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="6" data-period="6" data-group="2" data-atomic-number="56"><span class="atomic-number">56</span><span class="symbol">Ba</span><span class="element-name">Barium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="3" data-atomic-number="57"><span class="atomic-number">57</span><span class="symbol">La</span><span class="element-name">Lanthanum</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="4" data-atomic-number="58"><span class="atomic-number">58</span><span class="symbol">Ce</span><span class="element-name">Cerium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="5" data-atomic-number="59"><span class="atomic-number">59</span><span class="symbol">Pr</span><span class="element-name">Praseodymium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="6" data-atomic-number="60"><span class="atomic-number">60</span><span class="symbol">Nd</span><span class="element-name">Neodymium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="7" data-atomic-number="61"><span class="atomic-number">61</span><span class="symbol">Pm</span><span class="element-name">Promethium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="8" data-atomic-number="62"><span class="atomic-number">62</span><span class="symbol">Sm</span><span class="element-name">Samarium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="9" data-atomic-number="63"><span class="atomic-number">63</span><span class="symbol">Eu</span><span class="element-name">Europium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="10" data-atomic-number="64"><span class="atomic-number">64</span><span class="symbol">Gd</span><span class="element-name">Gadolinium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="11" data-atomic-number="65"><span class="atomic-number">65</span><span class="symbol">Tb</span><span class="element-name">Terbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="12" data-atomic-number="66"><span class="atomic-number">66</span><span class="symbol">Dy</span><span class="element-name">Dysprosium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="13" data-atomic-number="67"><span class="atomic-number">67</span><span class="symbol">Ho</span><span class="element-name">Holmium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="14" data-atomic-number="68"><span class="atomic-number">68</span><span class="symbol">Er</span><span class="element-name">Erbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="15" data-atomic-number="69"><span class="atomic-number">69</span><span class="symbol">Tm</span><span class="element-name">Thulium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="16" data-atomic-number="70"><span class="atomic-number">70</span><span class="symbol">Yb</span><span class="element-name">Ytterbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-state="solid" data-shells="6" data-period="6" data-group="17" data-atomic-number="71"><span class="atomic-number">71</span><span class="symbol">Lu</span><span class="element-name">Lutetium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="4" data-atomic-number="72"><span class="atomic-number">72</span><span class="symbol">Hf</span><span class="element-name">Hafnium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="5" data-atomic-number="73"><span class="atomic-number">73</span><span class="symbol">Ta</span><span class="element-name">Tantalum</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="6" data-atomic-number="74"><span class="atomic-number">74</span><span class="symbol">W</span><span class="element-name">Tungsten</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="7" data-atomic-number="75"><span class="atomic-number">75</span><span class="symbol">Re</span><span class="element-name">Rhenium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="8" data-atomic-number="76"><span class="atomic-number">76</span><span class="symbol">Os</span><span class="element-name">Osmium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="9" data-atomic-number="77"><span class="atomic-number">77</span><span class="symbol">Ir</span><span class="element-name">Iridium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="10" data-atomic-number="78"><span class="atomic-number">78</span><span class="symbol">Pt</span><span class="element-name">Platinum</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="11" data-atomic-number="79"><span class="atomic-number">79</span><span class="symbol">Au</span><span class="element-name">Gold</span></div>
+                <div class="element-tile transition-metal liquid" data-category="transition-metal" data-state="liquid" data-shells="6" data-period="6" data-group="12" data-atomic-number="80"><span class="atomic-number">80</span><span class="symbol">Hg</span><span class="element-name">Mercury</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="13" data-atomic-number="81"><span class="atomic-number">81</span><span class="symbol">Tl</span><span class="element-name">Thallium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="14" data-atomic-number="82"><span class="atomic-number">82</span><span class="symbol">Pb</span><span class="element-name">Lead</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="15" data-atomic-number="83"><span class="atomic-number">83</span><span class="symbol">Bi</span><span class="element-name">Bismuth</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="6" data-period="6" data-group="16" data-atomic-number="84"><span class="atomic-number">84</span><span class="symbol">Po</span><span class="element-name">Polonium</span></div>
+                <div class="element-tile metalloid solid" data-category="metalloid" data-state="solid" data-shells="6" data-period="6" data-group="17" data-atomic-number="85"><span class="atomic-number">85</span><span class="symbol">At</span><span class="element-name">Astatine</span></div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="6" data-period="6" data-group="18" data-atomic-number="86"><span class="atomic-number">86</span><span class="symbol">Rn</span><span class="element-name">Radon</span></div>
+
+                <!-- PERIOD 7 -->
+                <div class="element-tile alkali-metal solid" data-category="alkali-metal" data-state="solid" data-shells="7" data-period="7" data-group="1" data-atomic-number="87"><span class="atomic-number">87</span><span class="symbol">Fr</span><span class="element-name">Francium</span></div>
+                <div class="element-tile alkaline-earth-metal solid" data-category="alkaline-earth-metal" data-state="solid" data-shells="7" data-period="7" data-group="2" data-atomic-number="88"><span class="atomic-number">88</span><span class="symbol">Ra</span><span class="element-name">Radium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="3" data-atomic-number="89"><span class="atomic-number">89</span><span class="symbol">Ac</span><span class="element-name">Actinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="4" data-atomic-number="90"><span class="atomic-number">90</span><span class="symbol">Th</span><span class="element-name">Thorium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="5" data-atomic-number="91"><span class="atomic-number">91</span><span class="symbol">Pa</span><span class="element-name">Protactinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="6" data-atomic-number="92"><span class="atomic-number">92</span><span class="symbol">U</span><span class="element-name">Uranium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="7" data-atomic-number="93"><span class="atomic-number">93</span><span class="symbol">Np</span><span class="element-name">Neptunium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="8" data-atomic-number="94"><span class="atomic-number">94</span><span class="symbol">Pu</span><span class="element-name">Plutonium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="9" data-atomic-number="95"><span class="atomic-number">95</span><span class="symbol">Am</span><span class="element-name">Americium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="10" data-atomic-number="96"><span class="atomic-number">96</span><span class="symbol">Cm</span><span class="element-name">Curium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="11" data-atomic-number="97"><span class="atomic-number">97</span><span class="symbol">Bk</span><span class="element-name">Berkelium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="12" data-atomic-number="98"><span class="atomic-number">98</span><span class="symbol">Cf</span><span class="element-name">Californium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="13" data-atomic-number="99"><span class="atomic-number">99</span><span class="symbol">Es</span><span class="element-name">Einsteinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="14" data-atomic-number="100"><span class="atomic-number">100</span><span class="symbol">Fm</span><span class="element-name">Fermium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="15" data-atomic-number="101"><span class="atomic-number">101</span><span class="symbol">Md</span><span class="element-name">Mendelevium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="16" data-atomic-number="102"><span class="atomic-number">102</span><span class="symbol">No</span><span class="element-name">Nobelium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-state="solid" data-shells="7" data-period="7" data-group="17" data-atomic-number="103"><span class="atomic-number">103</span><span class="symbol">Lr</span><span class="element-name">Lawrencium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="4" data-atomic-number="104"><span class="atomic-number">104</span><span class="symbol">Rf</span><span class="element-name">Rutherfordium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="5" data-atomic-number="105"><span class="atomic-number">105</span><span class="symbol">Db</span><span class="element-name">Dubnium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="6" data-atomic-number="106"><span class="atomic-number">106</span><span class="symbol">Sg</span><span class="element-name">Seaborgium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="7" data-atomic-number="107"><span class="atomic-number">107</span><span class="symbol">Bh</span><span class="element-name">Bohrium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="8" data-atomic-number="108"><span class="atomic-number">108</span><span class="symbol">Hs</span><span class="element-name">Hassium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="9" data-atomic-number="109"><span class="atomic-number">109</span><span class="symbol">Mt</span><span class="element-name">Meitnerium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="10" data-atomic-number="110"><span class="atomic-number">110</span><span class="symbol">Ds</span><span class="element-name">Darmstadtium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="11" data-atomic-number="111"><span class="atomic-number">111</span><span class="symbol">Rg</span><span class="element-name">Roentgenium</span></div>
+                <div class="element-tile transition-metal solid" data-category="transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="12" data-atomic-number="112"><span class="atomic-number">112</span><span class="symbol">Cn</span><span class="element-name">Copernicium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="13" data-atomic-number="113"><span class="atomic-number">113</span><span class="symbol">Nh</span><span class="element-name">Nihonium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="14" data-atomic-number="114"><span class="atomic-number">114</span><span class="symbol">Fl</span><span class="element-name">Flerovium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="15" data-atomic-number="115"><span class="atomic-number">115</span><span class="symbol">Mc</span><span class="element-name">Moscovium</span></div>
+                <div class="element-tile post-transition-metal solid" data-category="post-transition-metal" data-state="solid" data-shells="7" data-period="7" data-group="16" data-atomic-number="116"><span class="atomic-number">116</span><span class="symbol">Lv</span><span class="element-name">Livermorium</span></div>
+                <div class="element-tile halogen solid" data-category="halogen" data-state="solid" data-shells="7" data-period="7" data-group="17" data-atomic-number="117"><span class="atomic-number">117</span><span class="symbol">Ts</span><span class="element-name">Tennessine</span></div>
+                <div class="element-tile noble-gas gas" data-category="noble-gas" data-state="gas" data-shells="7" data-period="7" data-group="18" data-atomic-number="118"><span class="atomic-number">118</span><span class="symbol">Og</span><span class="element-name">Oganesson</span></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- LANTHANIDE / ACTINIDE SEPARATE DISPLAY -->
+
+        <section class="f-block-section">
+
+            <div class="f-block-title"><h2 data-i18n="cat-lanthanide">Lanthanides</h2></div>
+
+            <div id="lanthanideSeries" class="f-block-series">
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="57"><span class="atomic-number">57</span><span class="symbol">La</span><span class="element-name">Lanthanum</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="58"><span class="atomic-number">58</span><span class="symbol">Ce</span><span class="element-name">Cerium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="59"><span class="atomic-number">59</span><span class="symbol">Pr</span><span class="element-name">Praseodymium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="60"><span class="atomic-number">60</span><span class="symbol">Nd</span><span class="element-name">Neodymium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="61"><span class="atomic-number">61</span><span class="symbol">Pm</span><span class="element-name">Promethium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="62"><span class="atomic-number">62</span><span class="symbol">Sm</span><span class="element-name">Samarium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="63"><span class="atomic-number">63</span><span class="symbol">Eu</span><span class="element-name">Europium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="64"><span class="atomic-number">64</span><span class="symbol">Gd</span><span class="element-name">Gadolinium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="65"><span class="atomic-number">65</span><span class="symbol">Tb</span><span class="element-name">Terbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="66"><span class="atomic-number">66</span><span class="symbol">Dy</span><span class="element-name">Dysprosium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="67"><span class="atomic-number">67</span><span class="symbol">Ho</span><span class="element-name">Holmium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="68"><span class="atomic-number">68</span><span class="symbol">Er</span><span class="element-name">Erbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="69"><span class="atomic-number">69</span><span class="symbol">Tm</span><span class="element-name">Thulium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="70"><span class="atomic-number">70</span><span class="symbol">Yb</span><span class="element-name">Ytterbium</span></div>
+                <div class="element-tile lanthanide solid" data-category="lanthanide" data-shells="6" data-atomic-number="71"><span class="atomic-number">71</span><span class="symbol">Lu</span><span class="element-name">Lutetium</span></div>
+            </div>
+
+            <div class="f-block-title"><h2 data-i18n="cat-actinide">Actinides</h2></div>
+
+            <div id="actinideSeries" class="f-block-series">
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="89"><span class="atomic-number">89</span><span class="symbol">Ac</span><span class="element-name">Actinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="90"><span class="atomic-number">90</span><span class="symbol">Th</span><span class="element-name">Thorium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="91"><span class="atomic-number">91</span><span class="symbol">Pa</span><span class="element-name">Protactinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="92"><span class="atomic-number">92</span><span class="symbol">U</span><span class="element-name">Uranium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="93"><span class="atomic-number">93</span><span class="symbol">Np</span><span class="element-name">Neptunium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="94"><span class="atomic-number">94</span><span class="symbol">Pu</span><span class="element-name">Plutonium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="95"><span class="atomic-number">95</span><span class="symbol">Am</span><span class="element-name">Americium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="96"><span class="atomic-number">96</span><span class="symbol">Cm</span><span class="element-name">Curium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="97"><span class="atomic-number">97</span><span class="symbol">Bk</span><span class="element-name">Berkelium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="98"><span class="atomic-number">98</span><span class="symbol">Cf</span><span class="element-name">Californium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="99"><span class="atomic-number">99</span><span class="symbol">Es</span><span class="element-name">Einsteinium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="100"><span class="atomic-number">100</span><span class="symbol">Fm</span><span class="element-name">Fermium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="101"><span class="atomic-number">101</span><span class="symbol">Md</span><span class="element-name">Mendelevium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="102"><span class="atomic-number">102</span><span class="symbol">No</span><span class="element-name">Nobelium</span></div>
+                <div class="element-tile actinide solid" data-category="actinide" data-shells="7" data-atomic-number="103"><span class="atomic-number">103</span><span class="symbol">Lr</span><span class="element-name">Lawrencium</span></div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ELEMENT INFORMATION PANEL -->
+
+    <section id="elementInfoPanel" class="element-info-panel" aria-hidden="true">
+
+        <div class="element-info-content">
+
+            <button id="closeElementInfo" class="close-element-info" type="button">×</button>
+
+            <div class="element-info-symbol">
+                <span id="infoAtomicNumber">1</span>
+                <strong id="infoSymbol">H</strong>
+            </div>
+
+            <div class="element-info-details">
+                <h2 id="infoElementName">Hydrogen</h2>
+                <p id="infoCategory">Nonmetal</p>
+                <p data-i18n="infoAtomicLabel">Atomic Number: <span id="infoAtomicNumberText">1</span></p>
+                <p data-i18n="infoShellsLabel">Electron Shells: <span id="infoShells">1</span></p>
+                <p data-i18n="infoStateLabel">State: <span id="infoState">Gas</span></p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- LEGEND -->
+
+    <section class="legend-section">
+
+        <h2 data-i18n="legendHeading">Element Categories</h2>
+
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color alkali-metal"></span><span data-i18n="cat-alkali-metal-single">Alkali Metal</span></div>
+            <div class="legend-item"><span class="legend-color alkaline-earth-metal"></span><span data-i18n="cat-alkaline-earth-metal-single">Alkaline Earth Metal</span></div>
+            <div class="legend-item"><span class="legend-color transition-metal"></span><span data-i18n="cat-transition-metal-single">Transition Metal</span></div>
+            <div class="legend-item"><span class="legend-color post-transition-metal"></span><span data-i18n="cat-post-transition-metal-single">Post-Transition Metal</span></div>
+            <div class="legend-item"><span class="legend-color metalloid"></span><span data-i18n="cat-metalloid-single">Metalloid</span></div>
+            <div class="legend-item"><span class="legend-color nonmetal"></span><span data-i18n="cat-nonmetal-single">Nonmetal</span></div>
+            <div class="legend-item"><span class="legend-color halogen"></span><span data-i18n="cat-halogen-single">Halogen</span></div>
+            <div class="legend-item"><span class="legend-color noble-gas"></span><span data-i18n="cat-noble-gas-single">Noble Gas</span></div>
+            <div class="legend-item"><span class="legend-color lanthanide"></span><span data-i18n="cat-lanthanide-single">Lanthanide</span></div>
+            <div class="legend-item"><span class="legend-color actinide"></span><span data-i18n="cat-actinide-single">Actinide</span></div>
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <strong>MOGIBARA</strong>
+            <span>© MOGIBARA</span>
+        </div>
+        <p data-i18n="footerText">Interactive Periodic Table • 118 Elements</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
