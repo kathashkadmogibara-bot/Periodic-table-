@@ -1,0 +1,238 @@
+:root {
+  --bg: #f4f5f8;
+  --text: #1b1d23;
+  --muted: #5a5f6b;
+  --card-bg: #ffffff;
+  --border: #dde0e6;
+  --accent: #3b6fd6;
+  --overlay: rgba(0, 0, 0, 0.45);
+
+  --alkali-metal: #ff8787;
+  --alkaline-earth-metal: #ffc078;
+  --transition-metal: #ffe066;
+  --post-transition-metal: #8ce99a;
+  --metalloid: #63e6be;
+  --nonmetal: #74c0fc;
+  --halogen: #91a7ff;
+  --noble-gas: #e599f7;
+  --lanthanide: #faa2c1;
+  --actinide: #ced4da;
+}
+
+body.dark {
+  --bg: #14161c;
+  --text: #eceef2;
+  --muted: #a3a8b5;
+  --card-bg: #1f222b;
+  --border: #333744;
+  --accent: #6ea0ff;
+  --overlay: rgba(0, 0, 0, 0.7);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", sans-serif;
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ---------- HEADER ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.mogibara-brand { display: flex; align-items: center; gap: 10px; }
+
+.mogibara-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.mogibara-brand-text { display: flex; flex-direction: column; font-size: 12px; color: var(--muted); }
+.mogibara-brand-text strong { font-size: 14px; color: var(--text); }
+
+.header-title { text-align: center; flex: 1 1 200px; }
+.header-title h1 { margin: 0; font-size: 20px; }
+.header-title p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
+
+.header-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.control-button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+}
+.control-button:hover { border-color: var(--accent); }
+
+/* ---------- FILTER PANEL (slide-in) ---------- */
+.filter-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100%;
+  background: var(--card-bg);
+  border-left: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  z-index: 50;
+}
+
+.filter-panel.active { right: 0; }
+
+.filter-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.filter-header h2 { margin: 0; font-size: 16px; }
+
+.close-filter-button,
+.close-element-info {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.filter-section { margin-bottom: 16px; }
+.filter-section h3 { font-size: 13px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.filter-option { display: flex; align-items: center; gap: 8px; font-size: 14px; padding: 4px 0; cursor: pointer; }
+
+.filter-actions { display: flex; gap: 8px; margin-top: 10px; }
+.apply-filter-button, .clear-filter-button {
+  flex: 1;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 13px;
+}
+.apply-filter-button { background: var(--accent); color: #fff; border-color: var(--accent); }
+.clear-filter-button { background: var(--card-bg); color: var(--text); }
+
+/* ---------- PERIODIC TABLE ---------- */
+.main-content { padding: 20px; }
+
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(40px, 1fr));
+  gap: 4px;
+}
+
+.element-tile {
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #14161c;
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+.element-tile:hover { transform: translateY(-2px); }
+
+.element-tile.filtered-out { opacity: 0.12; pointer-events: none; }
+
+.atomic-number { font-size: 9px; align-self: flex-start; opacity: 0.7; }
+.symbol { font-weight: 700; font-size: 14px; }
+.element-name { font-size: 8px; }
+
+.element-tile.alkali-metal, .legend-color.alkali-metal { background: var(--alkali-metal); }
+.element-tile.alkaline-earth-metal, .legend-color.alkaline-earth-metal { background: var(--alkaline-earth-metal); }
+.element-tile.transition-metal, .legend-color.transition-metal { background: var(--transition-metal); }
+.element-tile.post-transition-metal, .legend-color.post-transition-metal { background: var(--post-transition-metal); }
+.element-tile.metalloid, .legend-color.metalloid { background: var(--metalloid); }
+.element-tile.nonmetal, .legend-color.nonmetal { background: var(--nonmetal); }
+.element-tile.halogen, .legend-color.halogen { background: var(--halogen); }
+.element-tile.noble-gas, .legend-color.noble-gas { background: var(--noble-gas); }
+.element-tile.lanthanide, .legend-color.lanthanide { background: var(--lanthanide); }
+.element-tile.actinide, .legend-color.actinide { background: var(--actinide); }
+
+@media (max-width: 720px) {
+  .periodic-table { grid-template-columns: repeat(9, minmax(32px, 1fr)); }
+}
+
+/* ---------- F-BLOCK ---------- */
+.f-block-section { margin-top: 20px; }
+.f-block-title h2 { font-size: 14px; margin: 10px 0 6px; }
+.f-block-series { display: flex; flex-wrap: wrap; gap: 4px; }
+.f-block-series .element-tile { width: 52px; }
+
+/* ---------- ELEMENT INFO MODAL ---------- */
+.element-info-panel {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+.element-info-panel.active { display: flex; }
+
+.element-info-content {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 22px;
+  width: 280px;
+  position: relative;
+  text-align: center;
+}
+
+.close-element-info { position: absolute; top: 8px; right: 10px; }
+
+.element-info-symbol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.element-info-symbol span { font-size: 12px; color: var(--muted); }
+.element-info-symbol strong { font-size: 42px; }
+
+.element-info-details h2 { margin: 4px 0; }
+.element-info-details p { margin: 4px 0; font-size: 14px; color: var(--muted); }
+
+/* ---------- LEGEND ---------- */
+.legend-section { padding: 0 20px 20px; }
+.legend-section h2 { font-size: 15px; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+.legend-color { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+.footer-brand { margin-bottom: 4px; }
